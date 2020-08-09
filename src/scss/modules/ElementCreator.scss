@@ -1,0 +1,28 @@
+.ElementCreator {
+    border: 2px solid black;
+    border-radius: 5px;
+    min-width: 250px;
+    align-self: flex-start;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    padding: 16px;
+    &__form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__header {
+        padding: 0px;
+        margin: 0 0 16px 0;
+    }
+    &__item {
+        display: block;
+        width: 100%;
+        margin: 4px;
+    }
+    &__submit-button{
+        align-self: flex-end;
+    }
+}
