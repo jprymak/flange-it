@@ -1,0 +1,20 @@
+html{
+    box-sizing:border-box;
+  }
+  
+  *,
+  *:before,
+  *:after{
+    box-sizing:inherit;
+  }
+
+
+.header{
+    color: rgb(99, 89, 89);
+
+}
+
+.main{
+    display:flex;
+    justify-content: center;
+}
