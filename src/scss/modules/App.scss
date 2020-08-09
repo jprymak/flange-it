@@ -2,7 +2,9 @@
     width: 100vw;
     padding: 0 100px 100px;
     min-height: 100vh;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(1fr, 2);
+    grid-template-rows: repeat(1fr, 3);
+    column-gap: 16px;
+    row-gap: 16px;
 }
