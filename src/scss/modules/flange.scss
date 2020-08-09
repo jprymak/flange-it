@@ -1,0 +1,74 @@
+
+@keyframes rotation {
+    
+    from{
+        transform: rotate(0deg) scale(0.9);
+    }
+    to{
+        transform: rotate(360deg) scale(0.9);
+    }
+}
+
+
+.flange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border: solid 1px black;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 7%, rgba(139,132,132,1) 100%);
+    border-radius: 50%;
+
+    transform: scale(5);
+    animation: rotation 20s linear infinite;
+    
+    &__inner-diameter {
+        width: 116px;
+        height: 116px;
+        border: solid 1px black;
+        border-radius: 50%;
+        background: white;
+    }
+    &__hole {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border: solid 1px black;
+        border-radius: 50%;
+        background: white;
+        &:nth-of-type(2) {
+            left: 98px;
+            bottom: 11px;
+        }
+        &:nth-of-type(3) {
+            left: 98px;
+            top: 11px;
+        }
+        &:nth-of-type(4) {
+            left: 11px;
+            top: 98px;
+        }
+        &:nth-of-type(5) {
+            right: 11px;
+            top: 98px;
+        }
+        &:nth-of-type(6) {
+            left: 38px;
+            top: 38px;
+        }
+        &:nth-of-type(7) {
+            right: 38px;
+            bottom: 38px;
+        }
+        &:nth-of-type(8) {
+            right: 38px;
+            top: 38px;
+        }
+        &:nth-of-type(9) {
+            left: 38px;
+            bottom: 38px;
+        }
+    }
+}
