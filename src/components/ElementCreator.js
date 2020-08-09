@@ -4,6 +4,7 @@ function ElementCreator() {
   return (
     <section className="ElementCreator">
       <h2 className="ElementCreator__header">Pick element</h2>
+      <hr></hr>
       <form className="ElementCreator__form">
         <label>
           Element:{" "}
