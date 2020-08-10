@@ -7,6 +7,7 @@ import "./styles/ElementCreator.scss";
 import "./styles/App.scss";
 import "./styles/ElementList.scss";
 import "./styles/Preview.scss";
+import "./styles/Element.scss";
 
 ReactDOM.render(
   <React.StrictMode>
