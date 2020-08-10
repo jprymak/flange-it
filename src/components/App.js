@@ -1,15 +1,15 @@
 import React from 'react';
+
 import RotatingFlange from "./RotatingFlange";
-import ElementCreator from "./ElementCreator";
-import ElementList from "./ElementList";
+import EditableSection from "./EditableSection";
 import Preview from "./Preview";
+
 
 function App() {
   return (
     <div className="App">
       <RotatingFlange/>
-      <ElementCreator/>
-      <ElementList/>
+      <EditableSection/>
       <Preview/>
     </div>
   );
