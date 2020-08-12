@@ -13,6 +13,7 @@ super(props);
       id: uuidv4(),
       name: this.elementInput.current.value,
       diameter: this.diameterInput.current.value,
+      quantity: undefined,
     })
   }
 
