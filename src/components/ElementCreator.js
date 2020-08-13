@@ -1,21 +1,23 @@
 import React from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 class ElementCreator extends React.Component {
-  constructor(props){
-super(props);
+  constructor(props) {
+    super(props);
     this.elementInput = React.createRef();
     this.diameterInput = React.createRef();
   }
 
-  handleSubmit = (event)=>{
+ 
+
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.onCreate({
       id: uuidv4(),
       name: this.elementInput.current.value,
       diameter: this.diameterInput.current.value,
       quantity: undefined,
-    })
-  }
+    });
+  };
 
   render() {
     
@@ -47,7 +49,12 @@ super(props);
               <option value="DN 200">DN 200</option>
             </select>
           </label>
-          <button className="ElementCreator__submit-button">Add element</button>
+          
+          <button
+            className="ElementCreator__submit-button"
+          >
+            Add element
+          </button>
         </form>
       </section>
     );

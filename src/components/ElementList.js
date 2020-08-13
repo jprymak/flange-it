@@ -7,17 +7,41 @@ class ElementList extends React.Component {
   state = {
     elements: [
       { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
-      { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
-      { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
+      // { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
+      // { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
     ],
+    errorMessage: null
+    
   };
 
   addElement = (addedElement) => {
     this.setState((prevState) => {
-      const elements = [...prevState.elements, addedElement];
-      return { elements };
+      const notOnList = prevState.elements.every(
+        (element) => 
+            (element.name !== addedElement.name ||
+            element.diameter !== addedElement.diameter)
+      );
+      console.log(notOnList)
+      if(notOnList){
+        const elements = [...prevState.elements, addedElement];
+        // this.setState({error:null})
+        return { elements };
+      }
+      else{
+        const elements = [...prevState.elements];
+        return { elements };
+      }
+
+      
     });
   };
+
+  // addElement = (addedElement) => {
+  //   this.setState((prevState) => {
+  //     const elements = [...prevState.elements, addedElement];
+  //     return { elements };
+  //   });
+  // };
 
   handleUpdate = (indexToUpdate, updatedElement) => {
     this.setState((prevState) => {
@@ -32,21 +56,23 @@ class ElementList extends React.Component {
     this.addElement(createdElement);
   };
 
-  countFlanges = ()=>{
-    console.log(this.state.elements)
-  }
+  countFlanges = () => {
+    console.log(this.state.elements);
+  };
 
   render() {
     return (
       <>
-        <ElementCreator onCreate={this.handleCreate} />
+        <ElementCreator
+          elements={this.state.elements}
+          onCreate={this.handleCreate}
+        />
         <section className="ElementList">
           <h2>Element List</h2>
           <hr></hr>
           <ul>
             {this.state.elements.map((element, index) => (
               <Element
-
                 onChange={(event) =>
                   this.handleUpdate(index, {
                     ...element,
@@ -68,3 +94,4 @@ class ElementList extends React.Component {
 }
 
 export default ElementList;
+
