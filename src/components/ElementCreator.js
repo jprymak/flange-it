@@ -7,8 +7,6 @@ class ElementCreator extends React.Component {
     this.diameterInput = React.createRef();
   }
 
- 
-
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.onCreate({
@@ -20,7 +18,6 @@ class ElementCreator extends React.Component {
   };
 
   render() {
-    
     return (
       <section className="ElementCreator">
         <h2 className="ElementCreator__header">Pick element</h2>
@@ -49,12 +46,12 @@ class ElementCreator extends React.Component {
               <option value="DN 200">DN 200</option>
             </select>
           </label>
-          
-          <button
-            className="ElementCreator__submit-button"
-          >
-            Add element
-          </button>
+          {this.props.hasAlreadyBeenPicked ? (
+            <p style={{ color: "red" }}>
+              You've already picked that element. Choose a different one
+            </p>
+          ) : null}
+          <button className="ElementCreator__submit-button">Add element</button>
         </form>
       </section>
     );

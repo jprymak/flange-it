@@ -10,7 +10,7 @@ class ElementList extends React.Component {
       // { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
       // { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
     ],
-    errorMessage: null
+    hasAlreadyBeenPicked: false
     
   };
 
@@ -23,11 +23,12 @@ class ElementList extends React.Component {
       );
       console.log(notOnList)
       if(notOnList){
+        this.setState({hasAlreadyBeenPicked:false})
         const elements = [...prevState.elements, addedElement];
-        // this.setState({error:null})
         return { elements };
       }
       else{
+        this.setState({hasAlreadyBeenPicked:true})
         const elements = [...prevState.elements];
         return { elements };
       }
@@ -64,6 +65,7 @@ class ElementList extends React.Component {
     return (
       <>
         <ElementCreator
+          hasAlreadyBeenPicked={this.state.hasAlreadyBeenPicked}
           elements={this.state.elements}
           onCreate={this.handleCreate}
         />
