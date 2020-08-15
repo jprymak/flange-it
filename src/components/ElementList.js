@@ -28,9 +28,7 @@ class ElementList extends React.Component {
       return obj;
     }, {});
 
-    this.state.flanges = Object.keys(flanges).map((key) => [key, flanges[key]]);
-    
-    this.props.parentCallback(this.state.flanges);
+    this.props.parentCallback(Object.keys(flanges).map((key) => [key, flanges[key]]));
   }
 
   addElement = (addedElement) => {
