@@ -53,6 +53,14 @@ class ElementList extends React.Component {
     });
   };
 
+  handleDelete = (indexToRemove) =>{
+    this.setState(prevState=>{
+      const elements = prevState.elements.filter((element,index)=>index !== indexToRemove)
+      this.countFlanges(elements);
+      return { elements };
+    })
+  }
+
   handleUpdate = (indexToUpdate, updatedElement) => {
     this.setState((prevState) => {
       const elements = prevState.elements.map((element, index) =>
@@ -87,6 +95,7 @@ class ElementList extends React.Component {
                     quantity: event.target.value,
                   });
                 }}
+                onDelete={()=>this.handleDelete(index)}
                 key={element.id}
                 name={element.name}
                 diameter={element.diameter}
