@@ -1,6 +1,7 @@
 import React from "react";
-import { FlangePN16, ButterflyValvePN16, CheckValvePN16 } from "../data.js";
+// import { FlangePN16, ButterflyValvePN16, CheckValvePN16 } from "../data.js";
 class Preview extends React.Component {
+  
   render() {
     return (
       <section className="Preview">
@@ -9,16 +10,17 @@ class Preview extends React.Component {
         <div className="Preview__flanges">
           <h3>Flanges</h3>
           <hr></hr>
+          <ul>
+            {this.props.flanges.map((diameter,index)=>
+            <li key={index}>{diameter[0]}; Quantity: {diameter[1]}</li>
+            )}
+          </ul>
           
         </div>
         <div className="Preview__bolts">
           <h3>Bolts</h3>
           <hr></hr>
-          <ul>
-            {/* {FlangePN16.map((element) => (
-              <li>{element.bolt}</li>
-            ))} */}
-          </ul>
+          
         </div>
       </section>
     );

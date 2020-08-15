@@ -6,43 +6,33 @@ import { v4 as uuidv4 } from "uuid";
 class ElementList extends React.Component {
   state = {
     elements: [
-      { id: uuidv4(), name: "Strainer", diameter: "DN 40", quantity: "1" },
+      { id: uuidv4(), name: "Strainer", diameter: "DN 40", quantity: 1 },
       {
         id: uuidv4(),
         name: "Butterfly valve",
         diameter: "DN 32",
-        quantity: "1",
+        quantity: 1,
       },
-      { id: uuidv4(), name: "Check valve", diameter: "DN 50", quantity: "1" },
+      { id: uuidv4(), name: "Check valve", diameter: "DN 50", quantity: 1 },
     ],
-    flanges: [],
+    flanges: {},
     hasAlreadyBeenPicked: false,
   };
 
-  //  hasBeenPickedCheck(boolean){
-  //     if(boolean){
-  //       this.setState({hasAlreadyBeenPicked:false})
-  //     }
-  //     else{
-  //       this.setState({hasAlreadyBeenPicked:true})
-  //     }
-  //   }
+  calculateFlanges(elements){
+    
+    const flanges = elements.reduce(function (obj, item) {
+      if (!obj[item.diameter]) {
+        obj[item.diameter] = 0;
+      }
+      obj[item.diameter] += item.quantity * 2;
+      return obj;
+    }, {});
 
-  calculateFlanges = () => {
-    let flanges = this.state.elements
-      .reduce(function (obj, item) {
-        if (!obj[item.diameter]) {
-          obj[item.diameter] = 0;
-        }
-        obj[item.diameter]+=2;
-        return obj;
-      }, {})
-    // flanges = Object.keys(flanges).map((key) => [key, flanges[key]]);
-    // flanges = flanges.map(element=>element.[1]*2)
-    //  flanges= flanges.map(index=>element*2)
-      // console.log(flanges["DN 40"]*2)
-      console.log(flanges)
-    this.setState({ flanges: flanges });
+
+    this.state.flanges = Object.keys(flanges).map((key) => [key, flanges[key]]);
+    console.log(this.state.flanges);
+    this.props.parentCallback(this.state.flanges);
   };
 
   addElement = (addedElement) => {
@@ -70,6 +60,7 @@ class ElementList extends React.Component {
       const elements = prevState.elements.map((element, index) =>
         index === indexToUpdate ? updatedElement : element
       );
+      this.calculateFlanges(elements);
       return { elements };
     });
   };
@@ -96,16 +87,16 @@ class ElementList extends React.Component {
           <ul>
             {this.state.elements.map((element, index) => (
               <Element
-                onChange={(event) =>
+            
+                onChange={(event) => {
                   this.handleUpdate(index, {
                     ...element,
                     quantity: event.target.value,
-                  })
-                }
+                  });
+                }}
                 key={element.id}
                 name={element.name}
                 diameter={element.diameter}
-                onTake={this.takeInput}
               />
             ))}
           </ul>
