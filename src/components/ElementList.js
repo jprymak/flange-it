@@ -19,7 +19,7 @@ class ElementList extends React.Component {
     hasAlreadyBeenPicked: false,
   };
 
-  calculateFlanges(elements){
+  countFlanges(elements){
     
     const flanges = elements.reduce(function (obj, item) {
       if (!obj[item.diameter]) {
@@ -60,17 +60,13 @@ class ElementList extends React.Component {
       const elements = prevState.elements.map((element, index) =>
         index === indexToUpdate ? updatedElement : element
       );
-      this.calculateFlanges(elements);
+      this.countFlanges(elements);
       return { elements };
     });
   };
 
   handleCreate = (createdElement) => {
     this.addElement(createdElement);
-  };
-
-  countFlanges = () => {
-    console.log(this.state.flanges);
   };
 
   render() {
@@ -101,8 +97,6 @@ class ElementList extends React.Component {
             ))}
           </ul>
         </section>
-        <button onClick={this.calculateFlanges}>policz</button>
-        <button onClick={this.countFlanges}>sprawdz</button>
       </>
     );
   }
