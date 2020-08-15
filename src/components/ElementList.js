@@ -6,43 +6,64 @@ import { v4 as uuidv4 } from "uuid";
 class ElementList extends React.Component {
   state = {
     elements: [
-      { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
-      // { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
-      // { id: uuidv4(), name: "valve", diameter: "DN 65", quantity: "" },
+      { id: uuidv4(), name: "Strainer", diameter: "DN 40", quantity: "1" },
+      {
+        id: uuidv4(),
+        name: "Butterfly valve",
+        diameter: "DN 32",
+        quantity: "1",
+      },
+      { id: uuidv4(), name: "Check valve", diameter: "DN 50", quantity: "1" },
     ],
-    hasAlreadyBeenPicked: false
-    
+    flanges: [],
+    hasAlreadyBeenPicked: false,
+  };
+
+  //  hasBeenPickedCheck(boolean){
+  //     if(boolean){
+  //       this.setState({hasAlreadyBeenPicked:false})
+  //     }
+  //     else{
+  //       this.setState({hasAlreadyBeenPicked:true})
+  //     }
+  //   }
+
+  calculateFlanges = () => {
+    let flanges = this.state.elements
+      .reduce(function (obj, item) {
+        if (!obj[item.diameter]) {
+          obj[item.diameter] = 0;
+        }
+        obj[item.diameter]+=2;
+        return obj;
+      }, {})
+    // flanges = Object.keys(flanges).map((key) => [key, flanges[key]]);
+    // flanges = flanges.map(element=>element.[1]*2)
+    //  flanges= flanges.map(index=>element*2)
+      // console.log(flanges["DN 40"]*2)
+      console.log(flanges)
+    this.setState({ flanges: flanges });
   };
 
   addElement = (addedElement) => {
+    let notOnList;
     this.setState((prevState) => {
-      const notOnList = prevState.elements.every(
-        (element) => 
-            (element.name !== addedElement.name ||
-            element.diameter !== addedElement.diameter)
+      notOnList = prevState.elements.every(
+        (element) =>
+          element.name !== addedElement.name ||
+          element.diameter !== addedElement.diameter
       );
-      console.log(notOnList)
-      if(notOnList){
-        this.setState({hasAlreadyBeenPicked:false})
+      if (notOnList) {
+        this.setState({ hasAlreadyBeenPicked: false });
         const elements = [...prevState.elements, addedElement];
         return { elements };
-      }
-      else{
-        this.setState({hasAlreadyBeenPicked:true})
+      } else {
+        this.setState({ hasAlreadyBeenPicked: true });
         const elements = [...prevState.elements];
         return { elements };
       }
-
-      
     });
   };
-
-  // addElement = (addedElement) => {
-  //   this.setState((prevState) => {
-  //     const elements = [...prevState.elements, addedElement];
-  //     return { elements };
-  //   });
-  // };
 
   handleUpdate = (indexToUpdate, updatedElement) => {
     this.setState((prevState) => {
@@ -58,7 +79,7 @@ class ElementList extends React.Component {
   };
 
   countFlanges = () => {
-    console.log(this.state.elements);
+    console.log(this.state.flanges);
   };
 
   render() {
@@ -89,11 +110,11 @@ class ElementList extends React.Component {
             ))}
           </ul>
         </section>
-        <button onClick={this.countFlanges}>policz</button>
+        <button onClick={this.calculateFlanges}>policz</button>
+        <button onClick={this.countFlanges}>sprawdz</button>
       </>
     );
   }
 }
 
 export default ElementList;
-

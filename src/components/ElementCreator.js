@@ -13,7 +13,7 @@ class ElementCreator extends React.Component {
       id: uuidv4(),
       name: this.elementInput.current.value,
       diameter: this.diameterInput.current.value,
-      quantity: undefined,
+      quantity: "1",
     });
   };
 
@@ -48,7 +48,7 @@ class ElementCreator extends React.Component {
           </label>
           {this.props.hasAlreadyBeenPicked ? (
             <p style={{ color: "red" }}>
-              You've already picked that element. Choose a different one
+              You've already picked that element. Choose a different one.
             </p>
           ) : null}
           <button className="ElementCreator__submit-button">Add element</button>
