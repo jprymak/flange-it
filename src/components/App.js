@@ -5,19 +5,19 @@ import Preview from "./Preview";
 import ElementList from "./ElementList";
 
 class App extends React.Component {
-  state={
-    flanges: []
-  }
+  state = {
+    flanges: [],
+  };
 
-callbackFunction = (childData)=>{
-this.setState({flanges: childData})
-}
+  callbackFunction = (childData) => {
+    this.setState({ flanges: childData });
+  };
 
   render() {
     return (
       <div className="App">
         <RotatingFlange />
-        <ElementList parentCallback = {this.callbackFunction} />
+        <ElementList parentCallback={this.callbackFunction} />
         <Preview flanges={this.state.flanges} />
       </div>
     );

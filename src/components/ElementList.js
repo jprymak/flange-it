@@ -19,8 +19,7 @@ class ElementList extends React.Component {
     hasAlreadyBeenPicked: false,
   };
 
-  countFlanges(elements){
-    
+  countFlanges(elements) {
     const flanges = elements.reduce(function (obj, item) {
       if (!obj[item.diameter]) {
         obj[item.diameter] = 0;
@@ -29,11 +28,10 @@ class ElementList extends React.Component {
       return obj;
     }, {});
 
-
     this.state.flanges = Object.keys(flanges).map((key) => [key, flanges[key]]);
-    console.log(this.state.flanges);
+    
     this.props.parentCallback(this.state.flanges);
-  };
+  }
 
   addElement = (addedElement) => {
     let notOnList;
@@ -46,10 +44,12 @@ class ElementList extends React.Component {
       if (notOnList) {
         this.setState({ hasAlreadyBeenPicked: false });
         const elements = [...prevState.elements, addedElement];
+        this.countFlanges(elements);
         return { elements };
       } else {
         this.setState({ hasAlreadyBeenPicked: true });
         const elements = [...prevState.elements];
+        this.countFlanges(elements);
         return { elements };
       }
     });
@@ -83,7 +83,6 @@ class ElementList extends React.Component {
           <ul>
             {this.state.elements.map((element, index) => (
               <Element
-            
                 onChange={(event) => {
                   this.handleUpdate(index, {
                     ...element,
