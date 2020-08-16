@@ -2,33 +2,281 @@ import React from "react";
 import ElementCreator from "./ElementCreator";
 import Element from "./Element";
 import { v4 as uuidv4 } from "uuid";
+import { FlangePN16, ButterflyValvePN16, CheckValvePN16 } from "../data.js";
 
 class ElementList extends React.Component {
   state = {
     elements: [
-      { id: uuidv4(), name: "Strainer", diameter: "DN 40", quantity: 1 },
+      { id: uuidv4(), name: "Strainer", DN: "40", quantity: 1 },
       {
         id: uuidv4(),
         name: "Butterfly valve",
-        diameter: "DN 32",
+        DN: "32",
         quantity: 1,
       },
-      { id: uuidv4(), name: "Check valve", diameter: "DN 50", quantity: 1 },
+      { id: uuidv4(), name: "Check valve", DN: "50", quantity: 1 },
     ],
     flanges: {},
+    bolts: [],
     hasAlreadyBeenPicked: false,
   };
 
   countFlanges(elements) {
     const flanges = elements.reduce(function (obj, item) {
-      if (!obj[item.diameter]) {
-        obj[item.diameter] = 0;
+      if (!obj[item.DN]) {
+        obj[item.DN] = 0;
       }
-      obj[item.diameter] += item.quantity * 2;
+      obj[item.DN] += item.quantity * 2;
       return obj;
     }, {});
 
-    this.props.parentCallback(Object.keys(flanges).map((key) => [key, flanges[key]]));
+    this.props.getFlanges(
+      Object.keys(flanges).map((key) => [key, flanges[key]])
+    );
+  }
+
+  countBolts(elements) {
+    let bolts = [];
+    elements.forEach((element) => {
+      if (element.name === "Butterfly valve") {
+        ButterflyValvePN16.forEach((data) => {
+          if (element.DN === data.DN) {
+            switch (element.DN) {
+              case "32":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "40":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "50":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "65":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "80":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "100":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "125":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "150":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "200":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "250":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+            }
+          }
+        });
+      }
+      if (element.name === "Strainer") {
+        FlangePN16.forEach((data) => {
+          if (element.DN === data.DN) {
+            switch (element.DN) {
+              case "32":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "40":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "50":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "65":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "80":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "100":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "125":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "150":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "200":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "250":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+            }
+          }
+        });
+      }
+      if (element.name === "Check valve") {
+        CheckValvePN16.forEach((data) => {
+          if (element.DN === data.DN) {
+            switch (element.DN) {
+              case "32":
+                bolts.push({
+                  
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "40":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "50":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "65":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "80":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "100":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "125":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "150":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "200":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+              case "250":
+                bolts.push({
+                  size: data.size,
+                  length: data.length,
+                  quantity: data.quantity * element.quantity,
+                });
+                break;
+            }
+          }
+        });
+      }
+    });
+
+    console.log(bolts);
+    this.props.getBolts(bolts);
   }
 
   addElement = (addedElement) => {
@@ -36,30 +284,34 @@ class ElementList extends React.Component {
     this.setState((prevState) => {
       notOnList = prevState.elements.every(
         (element) =>
-          element.name !== addedElement.name ||
-          element.diameter !== addedElement.diameter
+          element.name !== addedElement.name || element.DN !== addedElement.DN
       );
       if (notOnList) {
         this.setState({ hasAlreadyBeenPicked: false });
         const elements = [...prevState.elements, addedElement];
         this.countFlanges(elements);
+        this.countBolts(elements);
         return { elements };
       } else {
         this.setState({ hasAlreadyBeenPicked: true });
         const elements = [...prevState.elements];
         this.countFlanges(elements);
+        this.countBolts(elements);
         return { elements };
       }
     });
   };
 
-  handleDelete = (indexToRemove) =>{
-    this.setState(prevState=>{
-      const elements = prevState.elements.filter((element,index)=>index !== indexToRemove)
+  handleDelete = (indexToRemove) => {
+    this.setState((prevState) => {
+      const elements = prevState.elements.filter(
+        (element, index) => index !== indexToRemove
+      );
       this.countFlanges(elements);
+      this.countBolts(elements);
       return { elements };
-    })
-  }
+    });
+  };
 
   handleUpdate = (indexToUpdate, updatedElement) => {
     this.setState((prevState) => {
@@ -67,6 +319,7 @@ class ElementList extends React.Component {
         index === indexToUpdate ? updatedElement : element
       );
       this.countFlanges(elements);
+      this.countBolts(elements);
       return { elements };
     });
   };
@@ -95,10 +348,10 @@ class ElementList extends React.Component {
                     quantity: event.target.value,
                   });
                 }}
-                onDelete={()=>this.handleDelete(index)}
+                onDelete={() => this.handleDelete(index)}
                 key={element.id}
                 name={element.name}
-                diameter={element.diameter}
+                DN={element.DN}
               />
             ))}
           </ul>

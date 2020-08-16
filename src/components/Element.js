@@ -1,10 +1,10 @@
 import React from "react";
 
-function Element({ name, diameter, onChange, onDelete }) {
+function Element({ name, DN, onChange, onDelete }) {
   return (
     <>
       <li className="Element">
-        {name}; {diameter}{" "}
+        {name}; DN {DN}{" "}
         <label>
           Quantity: <input onChange={onChange} type="number" />
         </label>

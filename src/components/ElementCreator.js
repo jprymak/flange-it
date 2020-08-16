@@ -12,7 +12,7 @@ class ElementCreator extends React.Component {
     this.props.onCreate({
       id: uuidv4(),
       name: this.elementInput.current.value,
-      diameter: this.diameterInput.current.value,
+      DN: this.diameterInput.current.value,
       quantity: "1",
     });
   };
@@ -35,15 +35,15 @@ class ElementCreator extends React.Component {
           <label>
             Nominal diameter:{" "}
             <select className="ElementCreator__item" ref={this.diameterInput}>
-              <option value="DN 32">DN 32</option>
-              <option value="DN 40">DN 40</option>
-              <option value="DN 50">DN 50</option>
-              <option value="DN 65">DN 65</option>
-              <option value="DN 80">DN 80</option>
-              <option value="DN 100">DN 100</option>
-              <option value="DN 125">DN 125</option>
-              <option value="DN 150">DN 150</option>
-              <option value="DN 200">DN 200</option>
+              <option value="32">DN 32</option>
+              <option value="40">DN 40</option>
+              <option value="50">DN 50</option>
+              <option value="65">DN 65</option>
+              <option value="80">DN 80</option>
+              <option value="100">DN 100</option>
+              <option value="125">DN 125</option>
+              <option value="150">DN 150</option>
+              <option value="200">DN 200</option>
             </select>
           </label>
           {this.props.hasAlreadyBeenPicked ? (
