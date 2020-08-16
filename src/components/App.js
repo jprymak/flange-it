@@ -7,18 +7,22 @@ import ElementList from "./ElementList";
 class App extends React.Component {
   state = {
     flanges: [],
+    bolts: [],
   };
 
-  callbackFunction = (childData) => {
+  getFlanges = (childData) => {
     this.setState({ flanges: childData });
+  };
+  getBolts = (childData) => {
+    this.setState({ bolts: childData });
   };
 
   render() {
     return (
       <div className="App">
         <RotatingFlange />
-        <ElementList parentCallback={this.callbackFunction} />
-        <Preview flanges={this.state.flanges} />
+        <ElementList getFlanges={this.getFlanges} getBolts={this.getBolts} />
+        <Preview flanges={this.state.flanges} bolts={this.state.bolts} />
       </div>
     );
   }
