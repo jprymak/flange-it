@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/flange-it/static/css/main.3c1ad7bc.chunk.css",
+    "main.js": "/flange-it/static/js/main.c3fd4583.chunk.js",
+    "main.js.map": "/flange-it/static/js/main.c3fd4583.chunk.js.map",
+    "runtime-main.js": "/flange-it/static/js/runtime-main.5041107c.js",
+    "runtime-main.js.map": "/flange-it/static/js/runtime-main.5041107c.js.map",
+    "static/js/2.d6bd9e25.chunk.js": "/flange-it/static/js/2.d6bd9e25.chunk.js",
+    "static/js/2.d6bd9e25.chunk.js.map": "/flange-it/static/js/2.d6bd9e25.chunk.js.map",
+    "index.html": "/flange-it/index.html",
+    "static/css/main.3c1ad7bc.chunk.css.map": "/flange-it/static/css/main.3c1ad7bc.chunk.css.map",
+    "static/js/2.d6bd9e25.chunk.js.LICENSE.txt": "/flange-it/static/js/2.d6bd9e25.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5041107c.js",
+    "static/js/2.d6bd9e25.chunk.js",
+    "static/css/main.3c1ad7bc.chunk.css",
+    "static/js/main.c3fd4583.chunk.js"
+  ]
+}
